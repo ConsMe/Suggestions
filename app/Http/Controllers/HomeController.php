@@ -33,7 +33,7 @@ class HomeController extends Controller
 
     public function suggest(Request $request)
     {
-        $url = 'https://suggest-maps.yandex.ru/suggest-geo?callback=id_156399828641450527879&v=5&search_type=tp&part='.$request->str.'&lang=ru_RU&n=6&origin=jsapi2Geocoder&bbox=33.948997488124995%2C44.85490259903078%2C34.278587331874995%2C45.040196655699525&local_only=0';
+        $url = 'https://suggest-maps.yandex.ru/suggest-geo?callback=id_156399828641450527879&v=5&search_type=tp&part='.urlencode($request->str).'&lang=ru_RU&n=6&origin=jsapi2Geocoder&bbox=33.948997488124995%2C44.85490259903078%2C34.278587331874995%2C45.040196655699525&local_only=0';
         $client = new Client();
         $result = $client->request('GET', $url);
         $result = json_decode(substr($result->getBody(), 25, -1));
