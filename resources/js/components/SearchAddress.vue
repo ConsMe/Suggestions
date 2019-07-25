@@ -36,7 +36,7 @@ export default {
     },
     methods: {
         getSuggestion() {
-            if (this.address && this.address.length < 3) {
+            if (!this.address || this.address.length < 3) {
                 this.addresses = []
                 return
             }
